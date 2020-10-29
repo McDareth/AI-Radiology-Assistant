@@ -21,7 +21,9 @@
                     Please click the button below to select an image and get started!
                 </p>
                 <p class="lead">
-                    <a href="{{ url_for('report')}}" class="btn btn-lg btn-secondary">Upload Image</a>
+                    <label class="btn btn-lg btn-secondary">
+                        Upload Image <input type="file" accept=".jpg, .png" hidden>
+                    </label>
                 </p>
             </div>
         </div>

@@ -5,12 +5,35 @@
     <main role="main" class="container" style="max-width: 60%;">
         <div class="row">
             <div class="col-md-6">
-                <div class="card mt-3">
+                <div class="card mt-3 mx-4">
                     <img class="card-img-top" src="{{ url_for('static', filename='images/sample_xray.jpg')}}" alt="Card image cap">
                     <div class="card-body">
                       <h5 class="card-title">Detected Diseases</h5>
                       <p class="card-text">Click any disease to bring up other relevant cases.</p>
-                      <p class="card-text"><a href="#", target="_blank">Disease 1</a>, <a href="#", target="_blank">Disease 2</a>, <a href="#", target="_blank">Disease 3</a></p>
+                      <ul>
+                        <li>
+                          <a href="#", target="_blank" class="mr-1">Disease 1</a>
+                          <div class="progress d-inline-block w-75 align-middle">
+                            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                          </div>
+                        </li>
+
+                        <li>
+                          <a href="#", target="_blank" class="mr-1">Disease 2</a>
+                          <div class="progress d-inline-block w-75 align-middle">
+                            <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+                          </div>
+                        </li>
+
+                        <li>
+                          <a href="#", target="_blank" class="mr-1">Disease 3</a>
+                          <div class="progress d-inline-block w-75 align-middle">
+                            <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+                          </div>
+                        </li>
+
+                      </ul>
+                    
                     </div>
                   </div>
             </div>

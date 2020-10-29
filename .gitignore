@@ -2,3 +2,4 @@
 flask-env/
 test.py
 *.pyc
+*.db

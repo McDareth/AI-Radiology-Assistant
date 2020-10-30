@@ -1,5 +1,9 @@
-from radiology_assistant import app
-from flask import render_template
+from radiology_assistant import app, bcrypt, db
+from flask import render_template, redirect, url_for, flash
+from flask_login import current_user
+from radiology_assistant.models import User
+from radiology_assistant.forms import RegistrationForm
+
 
 @app.route("/")
 def home():
@@ -13,9 +17,20 @@ def search():
 def report():
     return render_template("report.html")
 
-@app.route("/register")
+@app.route("/register", methods=['GET', 'POST'])
 def register():
-    return render_template("register.html")
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        user = User(firstname=form.firstname.data, lastname=form.lastname.data, username=form.username.data, email=form.email.data, password=hashed_password)
+        db.session.add(user)
+        db.session.commit()
+        flash('Your account has been created! You are now able to log in', 'success')
+        return redirect(url_for('login'))
+    return render_template('register.html', title='Register', form=form)
+    # return render_template("register.html")
 
 @app.route("/login")
 def login():

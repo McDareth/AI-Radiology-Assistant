@@ -15,7 +15,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(20), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(60), nullable=False)
-    admin = db.Column(db.Boolean, nullable=False)
+    admin = db.Column(db.Boolean, nullable=False, default=False)
     cases = db.relationship('Case', backref='user', lazy=True)
 
     def __repr__(self):

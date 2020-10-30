@@ -2,7 +2,6 @@ from datetime import datetime
 from radiology_assistant import db, login_manager
 from flask_login import UserMixin
 
-db.create_all()
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -23,6 +22,7 @@ class User(db.Model, UserMixin):
 
 class Case(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    image = db.Column(db.String(36), nullable=False, unique=True)
     patient = db.Column(db.String(50), nullable=False)
     doctor = db.Column(db.String(50), nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
@@ -41,3 +41,5 @@ class Disease(db.Model):
 
     def __repr__(self):
         return f"Disease('{self.name}', '{self.case_id}')"
+
+db.create_all()

@@ -14,8 +14,11 @@
     {% block styles %}
     {% endblock %}
     
-
-    <title>AI Radiology Assistant</title>
+    {% if title %}
+        <title>AI Radiology Assistant - {{ title }}</title>
+    {% else %}
+        <title>AI Radiology Assistant</title>
+    {% endif %}
 </head>
 
 <body>

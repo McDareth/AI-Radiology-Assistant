@@ -27,18 +27,49 @@
                       </ul>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form method="POST" action="">
+                            {{ form.hidden_tag() }}
+                            <!-- Username -->
                             <div class="form-group">
-                              <input type="text" class="form-control" placeholder="Username" id="loginUsernameInput" aria-describedby="usernameHelp">
+                              {% if form.username.errors %}
+                                {{ form.username(class="form-control is-invalid", placeholder=form.username.label.text) }}
+                                <div class="invalid-feedback">
+                                  {% for error in form.username.errors %}
+                                      <span>{{ error }}</span>
+                                  {% endfor %}
+                                </div>
+                              {% else %}
+                                {{ form.username(class="form-control", placeholder=form.username.label.text) }}
+                              {% endif %}
+                              <!-- <input type="text" class="form-control" placeholder="Username" id="loginUsernameInput" aria-describedby="usernameHelp"> -->
                             </div>
+
+                            <!-- Password -->
                             <div class="form-group">
-                              <input type="password" class="form-control" placeholder="Password" id="exampleInputPassword1">
+                              {% if form.password.errors %}
+                                {{ form.password(class="form-control is-invalid", placeholder=form.password.label.text) }}
+                                <div class="invalid-feedback">
+                                  {% for error in form.password.errors %}
+                                      <span>{{ error }}</span>
+                                  {% endfor %}
+                                </div>
+                              {% else %}
+                                {{ form.password(class="form-control", placeholder=form.password.label.text) }}
+                              {% endif %}
+                              <!-- <input type="password" class="form-control" placeholder="Password" id="exampleInputPassword1"> -->
                             </div>
+
+                            <!-- Remember me -->
                             <div class="form-group form-check">
-                              <input type="checkbox" class="form-check-input" id="rememberMe">
-                              <label class="form-check-label" for="rememberMe">Remember Me</label>
+                              {{ form.remember(class="form-check-input") }}
+                              {{ form.remember.label(class="form-check-label") }}
+                              <!-- <input type="checkbox" class="form-check-input" id="rememberMe">
+                              <label class="form-check-label" for="rememberMe">Remember Me</label> -->
                             </div>
-                            <button type="submit" class="btn btn-primary">Log In</button>
+
+                            <!-- Log in button -->
+                            {{ form.submit(class="btn btn-primary") }}
+                            <!-- <button type="submit" class="btn btn-primary">Log In</button> -->
                           </form>
                     </div>
                   

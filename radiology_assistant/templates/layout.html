@@ -52,9 +52,18 @@
         </nav>
     </header>
 
+    <div class="container d-flex justify-content-center">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }} d-inline-block justify-content-center">
+                {{ message }}
+            </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    </div>
 
-
-    
     {% block content %}
     {% endblock %}
 

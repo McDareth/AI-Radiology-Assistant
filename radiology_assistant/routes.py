@@ -13,9 +13,9 @@ def home():
 def search():
     return render_template("search.html")
 
-@app.route("/report")
+@app.route("/results")
 def report():
-    return render_template("report.html")
+    return render_template("results.html")
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():

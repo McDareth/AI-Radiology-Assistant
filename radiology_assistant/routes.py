@@ -9,6 +9,10 @@ from radiology_assistant.forms import RegistrationForm, LoginForm
 def home():
     return render_template("home.html")
 
+@app.route("/confirm")
+def confirm():
+    return render_template("confirmation.html")
+
 @app.route("/search")
 def search():
     return render_template("search.html")

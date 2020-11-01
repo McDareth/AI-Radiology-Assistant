@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <main role="main" class="container" style="max-width: 60%;">
+        <h1 class="display-3 text-center mb-4">Medical Report</h1>
+        
+        <div class="custom-form">
+            <div class="row">
+                <div class="col">
+                    <label>Patient Name</label>
+                    <p class="form-control">Joe Shmoe</p>
+                </div>
+                <div class="col">
+                    <label>Doctor Name</label>
+                    <p class="form-control">Dr. Pepper</p>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col">
+                    <img class="img-fluid rounded" src="{{ url_for('static', filename='images/sample_xray.jpg')}}" alt="User Image">
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header">
+                          Detected Diseases
+                        </div>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">
+                            <p>Disease 1</p>
+                            <div class="progress">
+                              <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                            </div>
+                          </li>
+
+                          <li class="list-group-item">
+                            <p>Disease 2</p>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+                            </div>
+                          </li>
+
+                          <li class="list-group-item">
+                            <p>Disease 3</p>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
+                            </div>
+                          </li>
+                        </ul>
+                    </div>
+
+                    <div class="card mt-4">
+                        <div class="card-header">
+                          Additional Diseases
+                        </div>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">
+                            Disease 4
+                          </li>
+
+                          <li class="list-group-item">
+                            Disease 5
+                          </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col">
+                    <label>Additional Details</label>
+                    <p class="form-control">
+                        Here is some additional information about this case. 
+                        Here is some additional information about this case. 
+                        Here is some additional information about this case. 
+                        Here is some additional information about this case. 
+                        Here is some additional information about this case. 
+                    </p>  
+                </div>
+                 
+            </div>
+        </div>
+
+        
+    </main>
+
+
+{% endblock %}

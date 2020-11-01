@@ -14,8 +14,12 @@ def search():
     return render_template("search.html")
 
 @app.route("/results")
-def report():
+def results():
     return render_template("results.html")
+
+@app.route("/report")
+def report():
+    return render_template("report.html")
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():

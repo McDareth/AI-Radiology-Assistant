@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <script>
+        function onDetectClick()
+        {
+            var detectionButton = document.getElementById("runDetection");
+            detectionButton.disabled = true;
+            detectionButton.innerHTML =  '<span class="spinner-border spinner-border-sm" role="status"></span> Running Detection...';
+        }
+    </script>
+
+    <main role="main" class="container" style="max-width: 60%;">
+        <h1 class="display-3 text-center mb-4">Confirm Image</h1>
+        <div class="row">
+            <div class="col">
+                <img class="img-fluid rounded" src="{{ url_for('static', filename='images/sample_xray.jpg')}}" alt="User Image">
+            </div>
+            <div class="col">
+                <form class="custom-form">
+                    <h2>Is this the correct image?</h2>
+                    <label>If this is the correct image, run the detection. If not, upload again.</label>
+                    <button type="button" class="btn btn-primary" id="runDetection" onclick="onDetectClick()">Run Detection</button>
+                    <button type="button" class="btn btn-secondary">Upload Different Image</button>
+                </form>
+            </div>
+        </div>
+        
+    </main>
+
+
+{% endblock %}

@@ -31,6 +31,3 @@ class LoginForm(FlaskForm):
 
 class ImageUploadForm(FlaskForm):
     image = FileField("", validators=[FileRequired(), FileAllowed(["jpg", "png"])])
-
-class ConfirmUploadForm(FlaskForm):
-    submit = SubmitField('Run Detection')

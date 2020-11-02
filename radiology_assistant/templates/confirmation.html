@@ -7,7 +7,7 @@
         {
             var confirmForm = document.getElementById("confirmForm");
             var detectionButton = document.getElementById("runDetection");
-            detectionButton.disabled = true;
+            detectionButton.classList.add("disabled");
             detectionButton.innerHTML =  '<span class="spinner-border spinner-border-sm" role="status"></span> Running Detection...';
             confirmForm.submit();
         }
@@ -21,11 +21,9 @@
             </div>
             <div class="col">
                 <form class="custom-form" method="POST" action="" id="confirmForm">
-                    {{ form.hidden_tag() }}
                     <h2>Is this the correct image?</h2>
                     <label>If this is the correct image, run the detection. If not, upload again.</label>
-                    {{ form.submit(class="btn btn-primary", id="runDetection", onClick="onDetectClick()") }}
-                    <!-- <button type="button" class="btn btn-primary" id="runDetection" onclick="onDetectClick()">Run Detection</button> -->
+                    <a href="{{ url_for('results') }}" type="button" class="btn btn-primary" id="runDetection" onclick="onDetectClick()">Run Detection</a>
                     <button type="button" class="btn btn-secondary">Upload Different Image</button>
                 </form>
             </div>

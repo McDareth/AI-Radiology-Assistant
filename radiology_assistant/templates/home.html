@@ -12,15 +12,6 @@
 
 {% block content %}
 
-    <!-- <script>
-        function detectUpload(){
-            var fileForm = document.getElementById("imageUploadForm")
-            var fileInput = document.getElementById("fileInput");
-            while (fileInput.files.length == 0){}
-            fileForm.submit();
-        }
-    </script> -->
-
     <main role="main" class="container d-flex h-100">
         <div class="row mx-auto align-items-center">
             <div class="col text-center">
@@ -30,11 +21,9 @@
                     Please click the button below to select an image and get started!
                 </p>
                 <form method="POST" action="" enctype="multipart/form-data">
-                    <!-- {{ url_for('confirm') }} -->
                     {{ form.hidden_tag() }}
                     <label class="btn btn-lg btn-secondary">
                         Upload Image {{ form.image(accept=".jpg, .png", onchange="this.form.submit();", hidden=True)}}
-                        <!-- <input type="file" accept=".jpg, .png" onchange="this.form.submit();" hidden> -->
                     </label>
                 </form>
 

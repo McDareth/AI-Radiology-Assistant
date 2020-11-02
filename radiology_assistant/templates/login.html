@@ -42,7 +42,6 @@
                               {% else %}
                                 {{ form.username(class="form-control", placeholder=form.username.label.text) }}
                               {% endif %}
-                              <!-- <input type="text" class="form-control" placeholder="Username" id="loginUsernameInput" aria-describedby="usernameHelp"> -->
                             </div>
 
                             <!-- Password -->
@@ -57,20 +56,16 @@
                               {% else %}
                                 {{ form.password(class="form-control", placeholder=form.password.label.text) }}
                               {% endif %}
-                              <!-- <input type="password" class="form-control" placeholder="Password" id="exampleInputPassword1"> -->
                             </div>
 
                             <!-- Remember me -->
                             <div class="form-group form-check">
                               {{ form.remember(class="form-check-input") }}
                               {{ form.remember.label(class="form-check-label") }}
-                              <!-- <input type="checkbox" class="form-check-input" id="rememberMe">
-                              <label class="form-check-label" for="rememberMe">Remember Me</label> -->
                             </div>
 
                             <!-- Log in button -->
                             {{ form.submit(class="btn btn-primary") }}
-                            <!-- <button type="submit" class="btn btn-primary">Log In</button> -->
                           </form>
                     </div>
                   

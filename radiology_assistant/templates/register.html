@@ -54,8 +54,6 @@
                           {% else %}
                           {{ form.lastname(class="form-control", placeholder=form.lastname.label.text) }}
                           {% endif %}
-                          <!-- <input type="text" class="form-control" placeholder="First Name" id="nameInput" aria-describedby="nameHelp">
-                          <input type="text" class="form-control" placeholder="Last Name" id="nameInput" aria-describedby="nameHelp"> -->
                         </div>
                         <!-- Username -->
                         <div class="input-group mb-3">
@@ -69,7 +67,6 @@
                           {% else %}
                             {{ form.username(class="form-control", placeholder=form.username.label.text) }}
                           {% endif %}
-                          <!-- <input type="text" class="form-control" placeholder="Username" id="loginUsernameInput" aria-describedby="usernameHelp"> -->
                         </div>
                         <!-- Email -->
                         <div class="input-group mb-3">
@@ -83,8 +80,6 @@
                           {% else %}
                             {{ form.email(class="form-control", placeholder=form.email.label.text) }}
                           {% endif %}
-                          <!-- <input type="email" class="form-control" placeholder="Email Address" id="exampleInputEmail1" aria-describedby="emailHelp"> -->
-
                         </div>
                         <!-- Password -->
                         <div class="input-group mb-3">
@@ -98,7 +93,6 @@
                           {% else %}
                             {{ form.password(class="form-control", placeholder=form.password.label.text) }}
                           {% endif %}
-                          <!-- <input type="password" class="form-control" placeholder="Password" id="exampleInputPassword1"> -->
                         </div>
                         <!-- Confirm Password -->
                         <div class="input-group mb-3">
@@ -112,11 +106,9 @@
                           {% else %}
                             {{ form.confirm_password(class="form-control", placeholder=form.confirm_password.label.text) }}
                           {% endif %}
-                          <!-- <input type="password" class="form-control" placeholder="Confirm password" id="exampleInputPassword1"> -->
                         </div>
                         <!-- Register Button -->
                         {{ form.submit(class="btn btn-primary") }}
-                        <!-- <button type="submit" class="btn btn-primary">Register</button> -->
                       </form>
                     </div>
                   </div>

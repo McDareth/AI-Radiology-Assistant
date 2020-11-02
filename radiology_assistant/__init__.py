@@ -6,6 +6,7 @@ from flask_login import LoginManager
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'dev secret key'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///radiologyassistant.db'
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)

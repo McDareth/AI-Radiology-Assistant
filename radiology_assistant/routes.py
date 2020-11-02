@@ -1,17 +1,31 @@
 from radiology_assistant import app, bcrypt, db
-from flask import render_template, redirect, url_for, flash, request
+from flask import render_template, redirect, url_for, flash, request, session
 from flask_login import current_user, login_user, logout_user
 from radiology_assistant.models import User
-from radiology_assistant.forms import RegistrationForm, LoginForm
+from radiology_assistant.forms import RegistrationForm, LoginForm, ImageUploadForm
+from radiology_assistant.utils import save_temp_image
 
-
-@app.route("/")
+@app.route("/", methods=['GET', 'POST'])
 def home():
-    return render_template("home.html")
+    form = ImageUploadForm()
+    if form.is_submitted():
+        if form.validate():
+            img_file = save_temp_image(form.image.data)
+            session["uploaded_image"] = img_file
+            print(img_file)
+            return redirect(url_for("confirm"))
+        else:
+            flash("Something went wrong. Please make sure you uploaded either a .png or .jpg image.", "danger")
+    return render_template("home.html", form=form)
 
 @app.route("/confirm")
 def confirm():
-    return render_template("confirmation.html")
+    uploaded_image = session.get("uploaded_image")
+    if uploaded_image is None:
+        return redirect(url_for("home"))
+    else:
+        session.pop("uploaded_image")
+        return render_template("confirmation.html", img_name=uploaded_image)
 
 @app.route("/search")
 def search():

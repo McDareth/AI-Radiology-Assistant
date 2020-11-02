@@ -10,7 +10,7 @@ def home():
     form = ImageUploadForm()
     if form.is_submitted():
         if form.validate():
-            img_file = save_temp_image(form.image.data)
+            img_file = save_temp_image(form.image.data, 10)
             session_image(img_file)
             print(img_file)
             return redirect(url_for("confirm"))
@@ -18,7 +18,7 @@ def home():
             flash("Something went wrong. Please make sure you uploaded either a .png or .jpg image.", "danger")
     return render_template("home.html", form=form)
 
-@app.route("/confirm")
+@app.route("/confirm", methods=['GET', 'POST'])
 def confirm():
     uploaded_image = session.get("uploaded_image")
     if uploaded_image is None:
@@ -28,9 +28,7 @@ def confirm():
         if form.is_submitted():
             return redirect(url_for("results"))
         else:
-            rendered_html = render_template("confirmation.html", img_name=uploaded_image)
-
-            return rendered_html
+            return render_template("confirmation.html", img_name=uploaded_image, form=form)
 
 @app.route("/search")
 def search():

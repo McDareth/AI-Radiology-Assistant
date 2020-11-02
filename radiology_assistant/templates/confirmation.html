@@ -5,9 +5,11 @@
     <script>
         function onDetectClick()
         {
+            var confirmForm = document.getElementById("confirmForm");
             var detectionButton = document.getElementById("runDetection");
             detectionButton.disabled = true;
             detectionButton.innerHTML =  '<span class="spinner-border spinner-border-sm" role="status"></span> Running Detection...';
+            confirmForm.submit();
         }
     </script>
 
@@ -18,10 +20,12 @@
                 <img class="img-fluid rounded" src="{{ url_for('static', filename='images/temp/' + img_name) }}" alt="User Image">
             </div>
             <div class="col">
-                <form class="custom-form">
+                <form class="custom-form" method="POST" action="" id="confirmForm">
+                    {{ form.hidden_tag() }}
                     <h2>Is this the correct image?</h2>
                     <label>If this is the correct image, run the detection. If not, upload again.</label>
-                    <button type="button" class="btn btn-primary" id="runDetection" onclick="onDetectClick()">Run Detection</button>
+                    {{ form.submit(class="btn btn-primary", id="runDetection", onClick="onDetectClick()") }}
+                    <!-- <button type="button" class="btn btn-primary" id="runDetection" onclick="onDetectClick()">Run Detection</button> -->
                     <button type="button" class="btn btn-secondary">Upload Different Image</button>
                 </form>
             </div>

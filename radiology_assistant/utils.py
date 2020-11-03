@@ -5,7 +5,7 @@ from PIL import Image
 import threading
 import time
 from radiology_assistant import app
-
+import random
 
 def schedule_img_delete(img, secs, cur_app):
     time.sleep(secs)
@@ -34,6 +34,18 @@ def image_in_temp():
         return False
     else:
         return os.path.exists(os.path.join(current_app.root_path, "static", "images", "temp", temp_image))
+
+
+
+
+def model(img):
+    diseases = ["Cardiomegaly", "Emphysema", "Effusion", "Hernia", "Infiltration", "Mass", "Nodule", "Atelectasis", "Pneumothorax", "Pleural_Thickening"]
+    time.sleep(2)
+    num_diseases = random.randint(0, 4)
+    detected = random.sample(diseases, num_diseases)
+    percentages = [random.randint(10,100) for _ in detected]
+
+    return list(zip(detected, percentages))
 
 
 

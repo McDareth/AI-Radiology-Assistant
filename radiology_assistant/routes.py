@@ -1,9 +1,10 @@
+from operator import mod
 from radiology_assistant import app, bcrypt, db
 from flask import render_template, redirect, url_for, flash, request, session
 from flask_login import current_user, login_user, logout_user
 from radiology_assistant.models import User
 from radiology_assistant.forms import RegistrationForm, LoginForm, ImageUploadForm
-from radiology_assistant.utils import save_temp_image, image_in_temp
+from radiology_assistant.utils import save_temp_image, image_in_temp, model
 import time
 
 @app.route("/", methods=['GET', 'POST'])
@@ -32,8 +33,13 @@ def search():
 
 @app.route("/results")
 def results():
-    time.sleep(5)
-    return render_template("results.html")
+    if not image_in_temp():
+        flash("Session timed out. Please upload another image.", "danger")
+        return redirect(url_for("home"))
+    else:
+        image = session.get("temp_image")
+        results = model(image)
+        return render_template("results.html", image=image, results=results)
 
 @app.route("/report")
 def report():

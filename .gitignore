@@ -3,3 +3,4 @@ flask-env/
 test.py
 *.pyc
 *.db
+radiology_assistant/static/images/temp/

@@ -24,7 +24,6 @@ class Case(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     image = db.Column(db.String(36), nullable=False, unique=True)
     patient = db.Column(db.String(50), nullable=False)
-    doctor = db.Column(db.String(50), nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     details = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)

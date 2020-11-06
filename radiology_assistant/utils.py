@@ -31,8 +31,8 @@ class UserSession:
         img_id = uuid.uuid4().hex
         _, img_ext = os.path.splitext(img.filename)
         img_name = img_id + img_ext
-        img_path = os.path.join(current_app.root_path, current_app.static_url_path, cls._temp_image_path, img_name)
-
+        img_path = os.path.join(current_app.root_path, current_app.static_folder, cls._temp_image_path, img_name)
+        print(img_path)
         p_img = Image.open(img)
         p_img.save(img_path)
         session[cls._session_image_string] = img_name
@@ -50,7 +50,7 @@ class UserSession:
         If full_path=2, "path/to/current/app/static/" is included at the start of the path as well.
         '''
         user_image = session.get(cls._session_image_string)
-        img_path = os.path.join(current_app.root_path, current_app.static_url_path, cls._temp_image_path, user_image)
+        img_path = os.path.join(current_app.root_path, current_app.static_folder, cls._temp_image_path, user_image)
         if user_image is not None and os.path.exists(img_path):
             if full_path == 0:
                 return user_image
@@ -68,7 +68,7 @@ class UserSession:
         image_name = cls.get_uploaded_image()
         image_path = cls.get_uploaded_image(full_path=2)
 
-        new_path = os.path.join(current_app.root_path, current_app.static_url_path, cls._permanent_xray_path, image_name)
+        new_path = os.path.join(current_app.root_path, current_app.static_folder, cls._permanent_xray_path, image_name)
         shutil.copy2(image_path, new_path)
         os.remove(image_path)
 
@@ -123,7 +123,7 @@ def model(img):
     time.sleep(2)
     num_diseases = random.randint(0, 4)
     detected = random.sample(diseases, num_diseases)
-    percentages = [random.randint(10,100) for _ in detected]
+    percentages = [random.uniform(0.1,0.99) for _ in detected]
 
     return list(zip(detected, percentages))
 

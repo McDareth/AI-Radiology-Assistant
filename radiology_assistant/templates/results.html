@@ -48,29 +48,42 @@
             </div>
             <div class="col-md-6">
                 <h1 class="display-4  text-center">Edit Medical Report</h1>
+                {% if user_auth %}
                 <p class="text-center">
                     Please edit and finalize this report.
                 </p>
-                <form class="mx-4 custom-form">
+                <form class="mx-4 custom-form" method="POST" action="">
+                    {{ form.hidden_tag() }}
                     <div class="form-group">
-                      <label for="patientNameInput">Patient Name</label>
-                      <input type="text" class="form-control" id="patientNameInput" placeholder="Enter Patient Name">
+                      {{ form.patient_name.label(class="form-control-label") }}
+                      {{ form.patient_name(class="form-control", placeholder="Enter Patient Name") }}
+                      <!-- <label for="patientNameInput">Patient Name</label>
+                      <input type="text" class="form-control" id="patientNameInput" placeholder="Enter Patient Name"> -->
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <label for="doctorNameInput">Doctor's Name</label>
                       <input type="text" class="form-control" id="doctorNameInput" placeholder="Enter Doctor's Name">
+                    </div> -->
+                    <div class="form-group">
+                        {{ form.additional_diseases.label(class="form-control-label") }}
+                        {{ form.additional_diseases(class="form-control", placeholder="Ex: Disease 1, Disease 2, Disease 3") }}
+                        <!-- <label for="doctorNameInput">Enter Additional Diseases (Comma Seperated)</label>
+                        <input type="text" class="form-control" id="diseaseInput" placeholder="Ex: Disease 1, Disease 2, Disease 3"> -->
                     </div>
                     <div class="form-group">
-                        <label for="doctorNameInput">Enter Additional Diseases (Comma Seperated)</label>
-                        <input type="text" class="form-control" id="diseaseInput" placeholder="Ex: Disease 1, Disease 2, Disease 3">
+                        {{ form.additional_details.label(class="form-control-label") }}
+                        {{ form.additional_details(class="form-control", placeholder="Enter any additional info/comments about the case here.") }}
+                        <!-- <label for="additionalInfoText">Enter Additional Details</label>
+                        <textarea class="form-control" id="additionalInfoText" rows="3", placeholder="Enter any additional info/comments about the case here."></textarea> -->
                     </div>
-                    <div class="form-group">
-                        <label for="additionalInfoText">Enter Additional Details</label>
-                        <textarea class="form-control" id="additionalInfoText" rows="3", placeholder="Enter any additional info/comments about the case here."></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Generate Report</button>
+                    {{ form.submit(class="btn btn-primary") }}
+                    <!-- <button type="submit" class="btn btn-primary">Generate Report</button> -->
                   </form>
-
+                  {% else %}
+                  <p class="text-center">
+                    Please <a href="{{ url_for('login') }}">log in</a> to create and save a report.
+                  </p>
+                  {% endif %}
             </div>
             
         </div>
